@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="board.dao.BoardMapper">
+
+<!-- 글쓰기 -->
+<insert id="insertBoard" parameterType="Board">
+	insert into board 
+	(boardnum, name, title, content)
+	values
+	(boardseq.nextval, #{name}, #{title}, #{content})
+</insert>
+
+<!-- 글수정 -->
+<update id="updateBoard" parameterType="Board">
+	update board set title=#{title}, content=#{content} where boardnum=#{boardnum}
+</update>
+
+<!-- 조회수 늘리기 -->
+<update id="updateHits" parameterType="int">
+	update board set hits=hits+1 where boardnum=#{boardnum}
+</update>
+
+<!-- 글삭제 -->
+<delete id="deleteBoard" parameterType="int">
+	delete from board where boardnum=#{boardnum}
+</delete>
+
+<!-- 글하나선택 -->
+<select id="selectBoard" parameterType="int" resultType="Board">
+	select boardnum, name, title, content, hits, to_char(indate, 'yyyy-mm-dd hh:mi') indate from board where boardnum=#{boardnum}
+</select>
+
+<!-- 전체글선택 -->
+<select id="selectAllBoard" resultType="Board">
+	select boardnum, name, title, content, hits, to_char(indate, 'yyyy-mm-dd hh:mi') indate from board order by boardnum desc
+</select>
+</mapper>
