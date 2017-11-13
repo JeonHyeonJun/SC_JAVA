@@ -68,8 +68,8 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "글번호: " + boardnum + ",글쓴이: " + name + ", 제목: " + title + ", 내용: " + content
-				+ ", 조회수: " + hits + ", 글쓴날짜: " + indate + "";
+		return "글번호: " + boardnum + ", 글쓴이: " + name + ", 제목: " + title + ", 내용: " + content
+				+ ", 조회수: " + hits + ", 작성일: " + indate + "";
 	}
 	
 	

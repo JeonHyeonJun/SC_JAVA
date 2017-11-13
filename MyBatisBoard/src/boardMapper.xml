@@ -29,6 +29,7 @@
 </delete>
 
 <!-- 글하나선택 -->
+<!-- int는 기본자료형int가 아닌 java.lang.Integer객체를 mybatis에서 alias로 바꿔놓은것이다 -->
 <select id="selectBoard" parameterType="int" resultType="Board">
 	select boardnum, name, title, content, hits, to_char(indate, 'yyyy-mm-dd hh:mi') indate from board where boardnum=#{boardnum}
 </select>
@@ -37,4 +38,27 @@
 <select id="selectAllBoard" resultType="Board">
 	select boardnum, name, title, content, hits, to_char(indate, 'yyyy-mm-dd hh:mi') indate from board order by boardnum desc
 </select>
+
+<!-- 글검색 -->
+<!-- java.util.HashMap, hashmap, map 셋다 됨  -->
+<select id="search" parameterType="map" resultType="Board">
+	select boardnum, name, title, content, hits, to_char(indate, 'yyyy-mm-dd hh:mi') indate from board 
+<!-- where안의 조건이 하나라도 있으면 where이고 하나도 없으면 where도 지움 -->
+<where>
+	<if test="col == 1">
+ 		upper(title) like upper('%' || #{word} || '%')
+ 	</if>
+ 	<if test="col == 2">
+ 		upper(content) like upper('%' || #{word} || '%')
+ 	</if>
+ 	<if test="col == 3">
+ 		upper(name) like upper('%' || #{word} || '%')
+ 	</if>
+ 	<if test="col == 4">
+ 		upper(content) like upper('%' || #{word} || '%') or upper(title) like upper('%' || #{word} || '%')
+ 	</if>
+</where>
+order by boardnum
+</select>
+
 </mapper>
