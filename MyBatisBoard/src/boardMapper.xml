@@ -55,7 +55,7 @@
  		upper(name) like upper('%' || #{word} || '%')
  	</if>
  	<if test="col == 4">
- 		upper(content) like upper('%' || #{word} || '%') or upper(title) like upper('%' || #{word} || '%')
+ 		upper(content) like upper('%' || #{word} || '%') or upper(title) like upper('%' || #{word} || '%') or upper(name) like upper('%' || #{word} || '%')
  	</if>
 </where>
 order by boardnum

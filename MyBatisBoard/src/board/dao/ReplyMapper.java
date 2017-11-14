@@ -9,5 +9,5 @@ public interface ReplyMapper {
 	public int updateReply(Reply r);
 	public int deleteReply(int replynum);
 	public Reply selectReply(int replynum);
-	public ArrayList<Reply> selectAllReply();
+	public ArrayList<Reply> selectAllReply(int boardnum);
 }

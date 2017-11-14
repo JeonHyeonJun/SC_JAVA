@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import board.dao.BoardDAO;
+import board.dao.ReplyDAO;
 import board.vo.Board;
+import board.vo.Reply;
 
 public class BoardUI {
 	BoardDAO boardDao = new BoardDAO();
+	ReplyDAO replyDao = new ReplyDAO();
 	Scanner scan = new Scanner(System.in);
 
 	public BoardUI() {
@@ -45,7 +48,7 @@ public class BoardUI {
 	
 	//기본메뉴
 	void printMainMenu() {
-		System.out.println("[ 게시판 ]");
+		System.out.println("[ 게시판  ]");
 		System.out.println("1. 글쓰기");
 		System.out.println("2. 전체글목록");
 		System.out.println("3. 글 읽기");
@@ -71,7 +74,7 @@ public class BoardUI {
 	
 	//글쓰기
 	public void insertBoard() {
-		System.out.println("[ 쓰기 ]");
+		System.out.println("[ 쓰기  ]");
 		System.out.print("이름: ");
 		String name = scan.nextLine();
 		System.out.print("제목: ");
@@ -89,7 +92,7 @@ public class BoardUI {
 	
 	//전체글목록
 	public void printBoard() {
-		System.out.println("[ 목록 ]");
+		System.out.println("[ 목록  ]");
 		ArrayList<Board> list = boardDao.selectAllBoard();
 		for (Board board : list) {
 			System.out.println(board);
@@ -98,12 +101,25 @@ public class BoardUI {
 	
 	//글 읽기
 	public void readBoard() {
-		System.out.println("[ 읽기 ]");
+		System.out.println("[ 읽기  ]");
 		int boardnum = getNum("글번호: ");
 		Board b = boardDao.selectBoard(boardnum);
 		if(b != null) {
 			boardDao.updateHits(boardnum);
-			System.out.println(b);
+			System.out.println("글번호: " +b.getBoardnum());
+			System.out.println("작성자: " +b.getName());
+			System.out.println("제목: " +b.getTitle());
+			System.out.println("내용: " +b.getContent());
+			System.out.println("조회수: " +b.getHits());
+			System.out.println("작성일: " +b.getIndate());
+			
+			ArrayList<Reply> replyList = replyDao.selectAllReply(boardnum);
+			System.out.println("------------------------------------------");
+			System.out.println("댓글 "+replyList.size()+"개");
+			for (Reply reply : replyList) {
+				System.out.println("작성자:" +reply.getName()+ "|내용:"+reply.getRetext());
+			}
+			insertReply(boardnum);
 		}
 		else
 			System.out.println("존재하지 않는 글번호입니다.");
@@ -111,7 +127,7 @@ public class BoardUI {
 	
 	//글 삭제
 	public void deleteBoard() {
-		System.out.println("[ 삭제 ]");
+		System.out.println("[ 삭제  ]");
 		int boardnum = getNum("글번호: ");
 		Board b = boardDao.selectBoard(boardnum);
 		if(b != null) {
@@ -124,8 +140,8 @@ public class BoardUI {
 	
 	//글 검색
 	public void searchBoard() {
-		System.out.println("[ 검색 ]");
-		int col = getNum("검색대상 (1.제목 2.내용 3.작성자 4.제목+내용)> ");
+		System.out.println("[ 검색  ]");
+		int col = getNum("검색대상 (1.제목 2.내용 3.작성자 4.전부)> ");
 		
 		ArrayList<Board> list = null;
 		System.out.print("검색어: ");
@@ -142,7 +158,7 @@ public class BoardUI {
 	
 	//글 수정
 	public void updateBoard() {
-		System.out.println("[ 수정 ]");
+		System.out.println("[ 수정  ]");
 		int boardnum = getNum("글번호: ");
 		Board b = boardDao.selectBoard(boardnum);
 		if(b != null) {
@@ -157,5 +173,26 @@ public class BoardUI {
 		}
 		else
 			System.out.println("존재하지 않는 글번호입니다.");
+	}
+	
+	public void insertReply(int boardnum) {
+		System.out.println("1. 댓글쓰기");
+		System.out.println("2. 이전");
+		int select = getNum("선택> ");
+		
+		switch (select) {
+		case 1:
+			System.out.print("작성자: ");
+			String name = scan.nextLine();
+			System.out.print("댓글내용: ");
+			String retext = scan.nextLine();
+			Reply r = new Reply(boardnum, name, retext);
+			replyDao.insertReply(r);
+			break;
+		case 2:
+			return;
+		default:
+			break;
+		}
 	}
 }

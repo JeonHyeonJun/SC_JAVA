@@ -8,6 +8,7 @@
 	<!-- Java Class에 대한 alias 지정 -->
 	<typeAliases>
 		<typeAlias type="board.vo.Board" alias="board" />
+		<typeAlias type="board.vo.Reply" alias="reply" />
 	</typeAliases>
 	
 	<!-- DB접속 정보 셋팅 -->
@@ -26,6 +27,7 @@
 	<!-- Mapper 파일 include -->
 	<mappers>
 		<mapper resource="boardMapper.xml" />
+		<mapper resource="replyMapper.xml"/>
 	</mappers>
 	
 </configuration>

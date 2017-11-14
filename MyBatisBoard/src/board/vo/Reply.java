@@ -48,7 +48,7 @@ public class Reply {
 
 	@Override
 	public String toString() {
-		return "Reply [replynum=" + replynum + ", boardnum=" + boardnum + ", name=" + name + ", retext=" + retext + "]";
+		return "댓글번호:" + replynum + ", 게시판번호:" + boardnum + ", 작성자:" + name + ", 내용:" + retext;
 	}
 	
 	
