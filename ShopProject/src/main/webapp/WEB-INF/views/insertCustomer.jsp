@@ -86,23 +86,26 @@
 </script>
 </head>
 <body>
+	<h1>회원가입</h1>
+	<p><font color="red">*</font>표시 항목은 필수항목입니다.</p>
+	<hr>
 	<form action="insertCustomer" method="post">
 		<table>
 			<tr>
-				<th>아이디</th>
+				<th>아이디<font color="red">*</font></th>
 				<td><input type="text" name="id" id="id" autocomplete="off" maxlength="15" placeholder="ID는 영문자,숫자 15자이하"></td>
 				<td id="idcheck"></td>
 			</tr>
 			<tr>
-				<th>비밀번호</th>
+				<th>비밀번호<font color="red">*</font></th>
 				<td><input type="password" name="password" id="password" maxlength="15"></td>
 			</tr>
 			<tr>
-				<th>비밀번호확인</th>
+				<th>비밀번호확인<font color="red">*</font></th>
 				<td><input type="password" name="password2" id="password2" maxlength="15"></td>
 			</tr>
 			<tr>
-				<th>이름</th>
+				<th>이름<font color="red">*</font></th>
 				<td><input type="text" name="name" id="name" maxlength="6"></td>
 			</tr>
 			<tr>

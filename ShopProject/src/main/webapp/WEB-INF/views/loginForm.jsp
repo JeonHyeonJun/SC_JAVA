@@ -45,6 +45,8 @@
 
 </head>
 <body>
+	<h1>로그인</h1>
+	<hr>
 	<form action="login" method="post">
 		<table>
 			<tr>
