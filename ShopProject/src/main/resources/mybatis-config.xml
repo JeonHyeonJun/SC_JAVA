@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<!-- ctrl누르고 마우스로 경로클릭해서 정상적으로 이동하면 경로설정 잘 된거 -->
+		<typeAlias type="com.swim.pswim.vo.Customer" alias="Customer" />
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mapper/customerMapper.xml" />
+	</mappers>
+</configuration>
