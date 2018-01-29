@@ -1,11 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="top.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 	<!-- 470c22aada080760827dae30daa86ac4 -->
 	<!-- http://openapi.11st.co.kr/openapi/OpenApiService.tmall?key=470c22aada080760827dae30daa86ac4&apiCode=ProductSearch&keyword=choco -->
-
+	<!-- http://openapi.11st.co.kr/openapi/OpenApiService.tmall?key=470c22aada080760827dae30daa86ac4&apiCode=ProductInfo&productCode=1315151863 -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,28 +27,27 @@
 
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
 <script type="text/javascript">
-
+	function insertCart(productCode) {
+		$.ajax({
+			url : "insertCart",
+			type : "post",
+			data : {
+				productCode : productCode
+			},
+			success : function() {
+				alert("장바구니에 등록되었습니다");
+			},
+			error : function() {
+				alert("정보불러오기 실패");
+			}
+		});
+	}
 </script>
 </head>
 
 
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar-light bg-light static-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">S&C Master</a>
-        
-        <c:if test="${sessionScope.loginId == null }">
-	        <a class="btn btn-primary" href="insertCustomerForm">회원가입</a>
-	        <a class="btn btn-primary" href="loginForm">로그인</a>
-        </c:if>
-        <c:if test="${sessionScope.loginId != null }">
-        	<font color="aqua">${sessionScope.loginName}</font>님 로그인중
-        	<a class="btn btn-primary" href="logout">로그아웃</a>
-        </c:if>
-      </div>
-    </nav>
 
     <!-- Masthead -->
     <header class="masthead text-white text-center">
@@ -73,26 +72,39 @@
         </div>
       </div>
     </header>
-	
+	<br>
 	<div>
-		<table border="1">
-			<tr>
-				<th>상품번호</th>
-				<th>상품명</th>
-				<th>상품가격</th>
-				<th>이미지</th>
-				<th>판매자</th>
-			</tr>
-			<c:forEach items="${list }" var="list">
-					<tr>
-						<td>${list.productCode }</td>
-						<td>${list.productName }</td>
-						<td>${list.productPrice }</td>
-						<td><img src="${list.productImage }" width="100px" height="100px"></td>
-						<td>${list.seller }</td>
-					</tr>
-			</c:forEach>
-		</table>
+		<c:if test="${list == null}">
+			<h1 style="text-align: center">검색결과가없습니다.</h1>
+		</c:if>
+		<c:if test="${list != null }">
+			<table border="1">
+				<tr>
+					<th>상품번호</th>
+					<th>상품명</th>
+					<th>상품가격</th>
+					<th>이미지</th>
+					<th>판매자</th>
+					<c:if test="${sessionScope.loginId != null }">
+						<th>장바구니</th>
+					</c:if>
+				</tr>
+				
+				<c:forEach items="${list }" var="list">
+					
+						<tr>
+							<td width="10%">${list.productCode }</td>
+							<td width="60%"><a href="productView?productCode=${list.productCode }">${list.productName }</a></td>
+							<td width="5%">${list.productPrice }</td>
+							<td width="7%"><img src="${list.productImage }" width="100px" height="100px"></td>
+							<td width="10%">${list.seller }</td>
+							<c:if test="${sessionScope.loginId != null }">
+								<td width="8%"><a href="javascript:insertCart(${list.productCode })">담기</a></td>
+							</c:if>
+						</tr>
+				</c:forEach>
+			</table>
+		</c:if>
 	</div>
     <!-- Bootstrap core JavaScript -->
     <script src="resources/vendor/jquery/jquery.min.js"></script>

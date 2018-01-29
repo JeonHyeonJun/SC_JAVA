@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.swim.pswim.HomeController;
+import com.swim.pswim.dao.BoardDAO;
 import com.swim.pswim.dao.CustomerDAO;
 import com.swim.pswim.vo.Customer;
 
@@ -24,6 +26,7 @@ public class CustomerController {
 	
 	@RequestMapping(value="insertCustomerForm", method=RequestMethod.GET)
 	public String insertCustomerForm(Customer customer){
+		
 		logger.info("회원가입폼 시작");
 		logger.info("회원가입종료 시작");
 		return "insertCustomer";
@@ -56,6 +59,7 @@ public class CustomerController {
 	@ResponseBody
 	@RequestMapping(value="login", method=RequestMethod.POST)
 	public boolean login(@RequestBody Customer customer, HttpSession session){
+		logger.info("로그인 시작");
 		Customer c = dao.selectOneCustomer(customer.getId());
 		if(c == null){
 			return false;
@@ -66,12 +70,16 @@ public class CustomerController {
 		
 		session.setAttribute("loginId", c.getId());
 		session.setAttribute("loginName", c.getName());
+		
+		logger.info("로그인 종료");
 		return true;
 	}
 	
 	@RequestMapping(value="logout", method=RequestMethod.GET)
 	public String logout(HttpSession session){
+		logger.info("로그아웃 시작");
 		session.invalidate();
+		logger.info("로그아웃 종료");
 		return "redirect:./";
 	}
 }

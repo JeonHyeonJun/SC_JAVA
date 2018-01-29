@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.swim.pswim.dao.BoardMapper">
+	<insert id="insertBoard" parameterType="Board">
+		insert into
+			productboard
+			(
+				num
+				,productcode
+				,id
+				,title
+				,content
+			) values (
+				productboard_seq.nextval
+				,#{productcode}
+				,#{id}
+				,#{title}
+				,#{content}
+			)
+	</insert>
+	
+	<select id="boardList" parameterType="String" resultType="Board">
+		select
+			num
+			,productcode
+			,id
+			,title
+			,content
+			,indate
+			,score
+		from
+			productboard
+		where
+			productcode=#{productcode}
+	</select>
+</mapper>

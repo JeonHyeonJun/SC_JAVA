@@ -7,9 +7,11 @@
 	<typeAliases>
 		<!-- ctrl누르고 마우스로 경로클릭해서 정상적으로 이동하면 경로설정 잘 된거 -->
 		<typeAlias type="com.swim.pswim.vo.Customer" alias="Customer" />
+		<typeAlias type="com.swim.pswim.vo.Board" alias="Board" />
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mapper/customerMapper.xml" />
+		<mapper resource="mapper/boardMapper.xml" />
 	</mappers>
 </configuration>

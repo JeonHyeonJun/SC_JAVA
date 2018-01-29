@@ -12,6 +12,7 @@ create table shopcustomer(
 
 create table productboard(
 	num number primary key,
+	productCode varchar(20) not null,
 	id varchar(20) not null,
 	title varchar(100),
 	content clob,
