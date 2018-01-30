@@ -13,14 +13,47 @@
 				,id
 				,title
 				,content
+				<if test="originalfile != null and originalfile != '' ">
+				,originalfile
+				,savedfile
+				</if>
 			) values (
 				productboard_seq.nextval
 				,#{productcode}
 				,#{id}
 				,#{title}
 				,#{content}
+				<if test="originalfile != null and originalfile != '' ">
+				,#{originalfile}
+				,#{savedfile}
+				</if>
 			)
 	</insert>
+	
+	<update id="updateBoard" parameterType="Board">
+		update
+			productboard
+		set
+			title=#{title}
+			,content=#{content}
+			<if test="originalfile != null and originalfile != '' ">
+			,originalfile=#{originalfile}
+			,savedfile=#{savedfile}
+			</if>
+		where
+			num=#{num}	
+		and
+			id=#{id}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="Board">
+		delete from
+			productboard
+		where
+			num=#{num}	
+		and
+			id=#{id}
+	</delete>
 	
 	<select id="boardList" parameterType="String" resultType="Board">
 		select
@@ -29,11 +62,30 @@
 			,id
 			,title
 			,content
-			,indate
+			,to_char(indate, 'yy-mm-dd') indate
 			,score
+			,originalfile
+			,savedfile
 		from
 			productboard
 		where
 			productcode=#{productcode}
+	</select>
+	
+	<select id="selectOneBoard" parameterType="int" resultType="Board">
+		select
+			num
+			,productcode
+			,id
+			,title
+			,content
+			,to_char(indate, 'yy-mm-dd') indate
+			,score
+			,originalfile
+			,savedfile
+		from
+			productboard
+		where
+			num=#{num}
 	</select>
 </mapper>

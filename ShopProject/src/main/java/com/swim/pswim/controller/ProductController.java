@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.swim.pswim.dao.BoardDAO;
@@ -54,7 +55,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="productView", method=RequestMethod.GET)
-	public String productView(String productCode, Model model){
+	public String productView(String productCode, String text, Model model){
 		logger.info("상품보기 시작");
 		String uri = "http://openapi.11st.co.kr/openapi/OpenApiService.tmall?key=470c22aada080760827dae30daa86ac4&apiCode=ProductInfo&productCode="+productCode;
 		
@@ -63,6 +64,7 @@ public class ProductController {
 		
 		model.addAttribute("product", product);
 		model.addAttribute("boardList", boardList);
+		model.addAttribute("text", text);
 		
 		logger.info("상품보기 종료");
 		return "productView";

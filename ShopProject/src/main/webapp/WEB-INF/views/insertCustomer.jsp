@@ -1,11 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="top.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원가입</title>
+<link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+	.bg{
+		text-align: center;
+		background-color: #bfff00;
+	}
+	table {
+		margin: auto;
+	}
+	input[type="text"]{
+		width: 300px;
+		border-radius: 5px;
+	}
+	input[type="password"]{
+		width: 300px;
+		border-radius: 5px;
+	}
+</style>
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.js"/>'></script>
 <script type="text/javascript">
 	$(function() {
@@ -86,43 +105,45 @@
 </script>
 </head>
 <body>
-	<h1>회원가입</h1>
-	<p><font color="red">*</font>표시 항목은 필수항목입니다.</p>
-	<hr>
-	<form action="insertCustomer" method="post">
-		<table>
-			<tr>
-				<th>아이디<font color="red">*</font></th>
-				<td><input type="text" name="id" id="id" autocomplete="off" maxlength="15" placeholder="ID는 영문자,숫자 15자이하"></td>
-				<td id="idcheck"></td>
-			</tr>
-			<tr>
-				<th>비밀번호<font color="red">*</font></th>
-				<td><input type="password" name="password" id="password" maxlength="15"></td>
-			</tr>
-			<tr>
-				<th>비밀번호확인<font color="red">*</font></th>
-				<td><input type="password" name="password2" id="password2" maxlength="15"></td>
-			</tr>
-			<tr>
-				<th>이름<font color="red">*</font></th>
-				<td><input type="text" name="name" id="name" maxlength="6"></td>
-			</tr>
-			<tr>
-				<th>전화번호</th>
-				<td><input type="text" name="phone" id="phone"></td>
-			</tr>
-			<tr>
-				<th>이메일</th>
-				<td><input type="text" name="email" id="email"></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input type="submit" value="가입" onclick="return check()">
-					<input type="button" value="돌아가기" onclick="location.href='./'">
-				</td>
-			</tr>
-		</table>
-	</form>
+	<div class="bg">
+		<h1>회원가입</h1>
+		<p><font color="red">*</font>표시 항목은 필수항목입니다.</p>
+		<hr>
+		<form action="insertCustomer" method="post">
+			<table>
+				<tr>
+					<th>아이디<font color="red">*</font></th>
+					<td><input type="text" name="id" id="id" autocomplete="off" maxlength="15" placeholder="ID는 영문자,숫자 15자이하"></td>
+					<td id="idcheck"></td>
+				</tr>
+				<tr>
+					<th>비밀번호<font color="red">*</font></th>
+					<td><input type="password" name="password" id="password" maxlength="15"></td>
+				</tr>
+				<tr>
+					<th>비밀번호확인<font color="red">*</font></th>
+					<td><input type="password" name="password2" id="password2" maxlength="15"></td>
+				</tr>
+				<tr>
+					<th>이름<font color="red">*</font></th>
+					<td><input type="text" name="name" id="name" maxlength="6"></td>
+				</tr>
+				<tr>
+					<th>전화번호</th>
+					<td><input type="text" name="phone" id="phone"></td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td><input type="text" name="email" id="email"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<a href="#"><input type="submit" value="가입" onclick="return check()" class="btn btn-primary"></a>
+						<a href="./" class="btn btn-primary">돌아가기</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

@@ -12,7 +12,7 @@
 	<div style="width: 90%; height:100%; margin: auto; background-color: #bfff00; text-align: center" >
 		<h1>상품정보</h1>
 	
-	<table border="1" style="margin: auto">
+	<table border="1" style="margin: auto" id="product">
 		<tr>
 			<td>상품명</td>
 			<td>${product.productName}</td>
@@ -35,12 +35,28 @@
 		</tr>
 	</table>
 	<br>
-	<a class="btn btn-primary" href="./">메인으로</a>
+	<a class="btn btn-primary" href="./?text=${text }">메인으로</a>
+	<br><br>
 	
-	<p>제품리뷰<a class="btn btn-primary" href="writeBoardForm?productCode=${product.productCode }">리뷰쓰기</a></p>
+	<table style="margin: auto; width: 1000px">
+		<tr>
+			<td colspan="4" style="text-align: left"><h1>제품리뷰</h1></td>
+		</tr>
+		<c:if test="${sessionScope.loginId != null }">
+			<tr>
+				<td colspan="4" style="text-align: right"><a class="btn btn-primary" href="writeBoardForm?productCode=${product.productCode }">리뷰쓰기</a></td>
+			</tr>
+		</c:if>
 	<c:forEach items="${boardList }" var="list">
-		${list.title }<br>
+		<tr>
+			<td><img src="download?num=${list.num}" onerror="this.src='resources/img/no_image.jpg'" width="100px" height="100px"></td>
+			<td width="70%"><a href="boardView?num=${list.num }"><c:out value="${list.title }"/></a></td>
+			<td width="20%">${list.id }</td>
+			<td width="10%">${list.indate }</td>
+		</tr>
+		
 	</c:forEach>
+	</table>
 	</div>
 </body>
 </html>

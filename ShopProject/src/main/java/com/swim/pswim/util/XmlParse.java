@@ -74,55 +74,6 @@ public ArrayList<Product> assignData(String uri) {
 		return list;
 	}
 
-public int totalCount(String uri) {
-	
-	int totalCount = 0;
-	 
-	try {
-		
-		String tagName = "Products";
-		
-		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-
-		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-
-		Document xml = documentBuilder.parse(uri);
-		
-		Element root = xml.getDocumentElement();
-
-		NodeList nodeList = root.getElementsByTagName(tagName);
-
-		if (nodeList.getLength() == 0)
-			return 0;
-
-		for (int i = 0; i < nodeList.getLength(); i++) {
-
-			Node nodeItem = nodeList.item(i);
-
-			try {
-
-				String total = getTagValue("totalCount", (Element) nodeItem);
-				totalCount = Integer.parseInt(total);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
-
-	} catch (ParserConfigurationException e) {
-		
-	} catch (SAXException e) {
-
-	} catch (IOException e) {
-
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
-	
-	return totalCount;
-}
-
 	private String getTagValue(String sTag, Element element) {
 
 		try {

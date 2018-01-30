@@ -17,7 +17,9 @@ create table productboard(
 	title varchar(100),
 	content clob,
 	indate date default sysdate,
-	score number default 0
+	score number default 0,
+	originalfile	varchar2(200),
+	savedfile		varchar2(100)			
 );
 
 create sequence productboard_seq;

@@ -8,12 +8,15 @@ public class Board {
 	private String content;
 	private String indate;
 	private int score;
+	private String originalfile;
+	private String savedfile;
 	
 	public Board() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Board(int num, String productcode, String id, String title, String content, String indate, int score) {
+	public Board(int num, String productcode, String id, String title, String content, String indate, int score,
+			String originalfile, String savedfile) {
 		this.num = num;
 		this.productcode = productcode;
 		this.id = id;
@@ -21,6 +24,8 @@ public class Board {
 		this.content = content;
 		this.indate = indate;
 		this.score = score;
+		this.originalfile = originalfile;
+		this.savedfile = savedfile;
 	}
 
 	public int getNum() {
@@ -79,11 +84,30 @@ public class Board {
 		this.score = score;
 	}
 
+	public String getOriginalfile() {
+		return originalfile;
+	}
+
+	public void setOriginalfile(String originalfile) {
+		this.originalfile = originalfile;
+	}
+
+	public String getSavedfile() {
+		return savedfile;
+	}
+
+	public void setSavedfile(String savedfile) {
+		this.savedfile = savedfile;
+	}
+
 	@Override
 	public String toString() {
 		return "Board [num=" + num + ", productcode=" + productcode + ", id=" + id + ", title=" + title + ", content="
-				+ content + ", indate=" + indate + ", score=" + score + "]";
+				+ content + ", indate=" + indate + ", score=" + score + ", originalfile=" + originalfile
+				+ ", savedfile=" + savedfile + "]";
 	}
+
+	
 
 	
 
