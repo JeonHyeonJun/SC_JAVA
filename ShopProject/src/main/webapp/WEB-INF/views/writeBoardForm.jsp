@@ -7,40 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<!-- summernote -->
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<link href="resources/css/boardWrite.css" rel="stylesheet">
+<link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.js"/>'></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
-<!-- 여기까지summernote -->
-
-<style type="text/css">
-	input[type="text"]{
-		width: 500px;
-		height: 30px;
-		border-radius: 5px;
-	}
-	table {
-		margin: auto;
-		margin-bottom: 10px;
-		padding-bottom: 10px;
-	}
-	tr {
-		margin: 10px;
-		padding: 10px;
-	}
-	th{
-		font-size: 20px;
-	}
-	textarea {
-		width: 500px;
-		height: 300px;
-		resize: none;
-		border-radius: 5px;
-	}
-</style>
-
 
 <script type="text/javascript">
 	function check() {
@@ -65,7 +34,7 @@
 	<form action="writeBoard" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="productcode" value="${productCode }">
 		<input type="hidden" name="id" value="${sessionScope.loginId }">
-		<div style="width: 90%; height:100%; margin: auto; background-color: #bfff00;">
+		<div class="bg">
 			<h1 style="text-align: center">리뷰작성</h1>
 			<table style="margin: auto;">
 				<tr>
@@ -75,6 +44,18 @@
 				<tr>
 					<th>사진</th>
 					<td><input type="file" name="upload"></td>
+				</tr>
+				<tr>
+					<th>별점</th>
+					<td>
+						<select name="score">
+							<option value="5">★★★★★</option>
+							<option value="4">★★★★☆</option>
+							<option value="3">★★★☆☆</option>
+							<option value="2">★★☆☆☆</option>
+							<option value="1">★☆☆☆☆</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<th>내용</th>

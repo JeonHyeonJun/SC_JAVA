@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+ table{
+ 	margin: auto;
+ 	width : 1000px;
+ }
+.bg {
+	width: 90%;
+	height: 100%;
+	margin: auto;
+	background-color: #bfff00;
+	text-align: center;
+}
+
+.th_title {
+	width: 10%;
+}
+
+.td_title {
+	width: 60%;
+}
+
+.th_id {
+	width: 10%;
+}
+
+.td_id {
+	width: 20%;
+}
+
+.td_img {
+	text-align: left;
+}
+
+.td_content {
+	text-align: left;
+}

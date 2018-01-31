@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품 상세보기</title>
 <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.js"/>'></script>
+
 </head>
 <body>
 	<div style="width: 90%; height:100%; margin: auto; background-color: #bfff00; text-align: center" >
@@ -50,7 +52,14 @@
 	<c:forEach items="${boardList }" var="list">
 		<tr>
 			<td><img src="download?num=${list.num}" onerror="this.src='resources/img/no_image.jpg'" width="100px" height="100px"></td>
-			<td width="70%"><a href="boardView?num=${list.num }"><c:out value="${list.title }"/></a></td>
+			<td width="60%"><a href="boardView?num=${list.num }"><c:out value="${list.title }"/></a></td>
+			<td width="10%">
+				<c:if test="${list.score == 5 }">★★★★★</c:if>
+				<c:if test="${list.score == 4 }">★★★★☆</c:if>
+				<c:if test="${list.score == 3 }">★★★☆☆</c:if>
+				<c:if test="${list.score == 2 }">★★☆☆☆</c:if>
+				<c:if test="${list.score == 1 }">★☆☆☆☆</c:if>
+			</td>
 			<td width="20%">${list.id }</td>
 			<td width="10%">${list.indate }</td>
 		</tr>

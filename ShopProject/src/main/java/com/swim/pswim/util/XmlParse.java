@@ -1,8 +1,14 @@
 package com.swim.pswim.util;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,9 +26,12 @@ public class XmlParse {
 public ArrayList<Product> assignData(String uri) {
 		
 		ArrayList<Product> list = new ArrayList<>();
-		 
+		
+		// euc-kr 로 변환된 byte 문자열을 다시 유니코드 String 으로 변환.
+		// String 생성자의 
+		// 첫 번째 인자로 문자열 byte 배열을  넣어주고, 
+		// 두 번째 인자로 byte 배열의 인코딩 값을 넣어준다.
 		try {
-			
 			String tagName = "Product";
 			
 			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();

@@ -34,6 +34,7 @@ public class ProductController {
 	@RequestMapping(value="insertCart", method=RequestMethod.POST)
 	public void insertCart(int productCode, HttpSession session){
 		logger.info("장바구니담기 시작");
+		
 		String uri = "http://openapi.11st.co.kr/openapi/OpenApiService.tmall?key=470c22aada080760827dae30daa86ac4&apiCode=ProductInfo&productCode="+productCode;
 		
 		Product product = xmlparse.assignData(uri).get(0);

@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품 상세보기</title>
+
+<link href="resources/css/boardView.css" rel="stylesheet">
 <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.js"/>'></script>
 
@@ -29,23 +31,31 @@
 </script>
 </head>
 <body>
-	<div style="width: 90%; height:100%; margin: auto; background-color: #bfff00; text-align: center" >
+	<div class="bg">
 		<h1>제품리뷰</h1>
 	
-	<table border="1" style="margin: auto" width="1000px">
+	<table border="1">
 		<tr>
-			<th width="10%">제목</th>
-			<td width="60%"><c:out value="${board.title}"/></td>
-			<th width="10%">작성자</th>
-			<td width="20%">${board.id }</td>
+			<th class="th_title">제목</th>
+			<td class="td_title"><c:out value="${board.title}"/></td>
+			<th class="th_id">작성자</th>
+			<td class="td_id">${board.id }</td>
+			<th>별점</th>
+			<td>
+				<c:if test="${board.score == 5 }">★★★★★</c:if>
+				<c:if test="${board.score == 4 }">★★★★☆</c:if>
+				<c:if test="${board.score == 3 }">★★★☆☆</c:if>
+				<c:if test="${board.score == 2 }">★★☆☆☆</c:if>
+				<c:if test="${board.score == 1 }">★☆☆☆☆</c:if>
+			</td>
 		</tr>
 		<tr>
 			<th>사진</th>
-			<td colspan="3" style="text-align: left"><img src="download?num=${board.num }" onerror="this.src='resources/img/no_image.jpg'" width="300px" height="200px"></td>
+			<td class="td_img" colspan="5"><img src="download?num=${board.num }" onerror="this.src='resources/img/no_image.jpg'" width="300px" height="200px"></td>
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td colspan="3" style="text-align: left"><c:out value="${board.content}"/></td>
+			<td class="td_content" colspan="5"><c:out value="${board.content}"/></td>
 		</tr>
 		
 	</table>

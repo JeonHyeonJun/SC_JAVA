@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+.bg {
+	width: 90%;
+	height: 100%;
+	margin: auto;
+	background-color: #bfff00;
+}
+
+input[type="text"] {
+	width: 500px;
+	height: 30px;
+	border-radius: 5px;
+}
+
+table {
+	margin: auto;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+tr {
+	margin: 10px;
+	padding: 10px;
+}
+
+th {
+	font-size: 20px;
+}
+
+textarea {
+	width: 500px;
+	height: 300px;
+	resize: none;
+	border-radius: 5px;
+}
