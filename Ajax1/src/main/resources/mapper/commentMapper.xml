@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.swim.ajax1.dao.CommentMapper">
+	<insert id="insertComment" parameterType="Comment">
+		insert into
+			usercomment
+			(
+				num
+				,name
+				,text	
+			) values 
+			(
+				usercomment_seq.nextval
+				,#{name}
+				,#{text}	
+			)
+	</insert>
+	<delete id="deleteComment" parameterType="int">
+		delete from
+			usercomment
+		where
+			num = #{num}
+	</delete>
+	<update id="updateComment" parameterType="Comment">
+		update
+			usercomment
+		set
+			text=#{text}
+		where
+			num=#{num}
+	</update>
+	<select id="commentList" resultType="Comment">
+		select
+			num
+			,name
+			,text
+		from
+			usercomment
+		order by
+			num desc
+	</select>
+</mapper>
