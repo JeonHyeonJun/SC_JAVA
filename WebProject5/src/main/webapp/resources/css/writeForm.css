@@ -1,0 +1,34 @@
+@CHARSET "UTF-8";
+
+h1 {
+	text-align: center;
+}
+
+table {
+	width: 700px;
+	margin: auto;
+}
+
+textarea {
+	width: 90%;
+	height: 300px;
+	resize: none;
+	border-radius: 5px;
+}
+
+th {
+	background-color: hotpink;
+}
+
+td {
+	background-color: pink;
+}
+
+input[type="text"] {
+	border-radius: 5px;
+	width: 90%;
+}
+
+.btn-center {
+	text-align: center;
+}
