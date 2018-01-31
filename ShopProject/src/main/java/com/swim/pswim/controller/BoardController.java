@@ -92,18 +92,14 @@ public class BoardController {
 		logger.info("리뷰수정 시작");
 		Board b = dao.selectOneBoard(board.getNum());
 		if(!upload.isEmpty()){
-			logger.info("글수정 첨부파일 추가 시작");
+			logger.info("리뷰수정 첨부파일 추가 시작");
+			FileService.deleteFile(uploadPath+"/"+b.getSavedfile());
 			String savedfile = FileService.saveFile(upload, uploadPath);
 			board.setSavedfile(savedfile);
 			board.setOriginalfile(upload.getOriginalFilename());
-			logger.info("글수정 첨부파일 추가 종료");
+			logger.info("리뷰수정 첨부파일 추가 종료");
 		}
 		int result = dao.updateBoard(board);
-		if(result == 1){
-			logger.info("리뷰수정 첨부파일 삭제 시작");
-			FileService.deleteFile(uploadPath+"/"+b.getSavedfile());
-			logger.info("리뷰수정 첨부파일 삭제 시작");
-		}
 		logger.info("리뷰수정 종료");
 		return "redirect:boardView?num="+board.getNum();
 	}
