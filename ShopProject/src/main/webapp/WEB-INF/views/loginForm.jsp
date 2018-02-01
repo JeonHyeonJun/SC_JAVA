@@ -11,10 +11,15 @@
 <style type="text/css">
 	.bg{
 		text-align: center;
-		background-color: #bfff00;
 	}
 	table {
 		margin: auto;
+	}
+	input[type="text"]{
+		border-radius: 5px;
+	}
+	input[type="password"]{
+		border-radius: 5px;
 	}
 </style>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>

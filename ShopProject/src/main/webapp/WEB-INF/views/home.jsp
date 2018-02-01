@@ -3,9 +3,6 @@
 <%@ include file="top.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
-	<!-- 470c22aada080760827dae30daa86ac4 -->
-	<!-- http://openapi.11st.co.kr/openapi/OpenApiService.tmall?key=470c22aada080760827dae30daa86ac4&apiCode=ProductSearch&keyword=choco -->
-	<!-- http://openapi.11st.co.kr/openapi/OpenApiService.tmall?key=470c22aada080760827dae30daa86ac4&apiCode=ProductInfo&productCode=1315151863 -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

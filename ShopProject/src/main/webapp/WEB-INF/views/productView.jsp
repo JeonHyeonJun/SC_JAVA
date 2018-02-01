@@ -6,15 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>상품 상세보기</title>
+
+<link href="resources/css/productView.css" rel="stylesheet">
 <link href="resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-3.2.1.js"/>'></script>
 
 </head>
 <body>
-	<div style="width: 90%; height:100%; margin: auto; background-color: #bfff00; text-align: center" >
+	<div class="bg">
 		<h1>상품정보</h1>
 	
-	<table border="1" style="margin: auto" id="product">
+	<table border="1" class="product_table" id="product">
 		<tr>
 			<td>상품명</td>
 			<td>${product.productName}</td>
@@ -27,7 +29,7 @@
 			<td>상품이미지</td>
 			<td>
 				<a href="http://www.11st.co.kr/product/SellerProductDetail.tmall?method=getSellerProductDetail&prdNo=${product.productCode }">
-					<img src="${product.basicImage }">
+					<img src="${product.basicImage }" class="productimg">
 				</a>
 			</td>
 		</tr>
@@ -40,13 +42,13 @@
 	<a class="btn btn-primary" href="./?text=${text }">메인으로</a>
 	<br><br>
 	
-	<table style="margin: auto; width: 1000px">
+	<table class="board_table" >
 		<tr>
 			<td colspan="4" style="text-align: left"><h1>제품리뷰</h1></td>
 		</tr>
 		<c:if test="${sessionScope.loginId != null }">
 			<tr>
-				<td colspan="4" style="text-align: right"><a class="btn btn-primary" href="writeBoardForm?productCode=${product.productCode }">리뷰쓰기</a></td>
+				<td colspan="4" class="" style="text-align: right"><a class="btn btn-primary" href="writeBoardForm?productCode=${product.productCode }">리뷰쓰기</a></td>
 			</tr>
 		</c:if>
 	<c:forEach items="${boardList }" var="list">

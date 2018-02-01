@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+.bg {
+	width: 90%;
+	height: 100%;
+	margin: auto;
+	background-color: #bfff00;
+	text-align: center;
+}
+
+.product_table {
+	margin: auto
+}
+
+.board_table {
+	margin: auto;
+	width: 1000px;
+}
+
+.productimg {
+	width: 700px;
+	height: 500px;
+}

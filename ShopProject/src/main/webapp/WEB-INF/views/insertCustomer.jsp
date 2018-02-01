@@ -11,7 +11,6 @@
 <style type="text/css">
 	.bg{
 		text-align: center;
-		background-color: #bfff00;
 	}
 	table {
 		margin: auto;
@@ -118,23 +117,23 @@
 				</tr>
 				<tr>
 					<th>비밀번호<font color="red">*</font></th>
-					<td><input type="password" name="password" id="password" maxlength="15"></td>
+					<td><input type="password" name="password" id="password" maxlength="15" placeholder="15자이하"></td>
 				</tr>
 				<tr>
 					<th>비밀번호확인<font color="red">*</font></th>
-					<td><input type="password" name="password2" id="password2" maxlength="15"></td>
+					<td><input type="password" name="password2" id="password2" maxlength="15" placeholder="15자이하"></td>
 				</tr>
 				<tr>
 					<th>이름<font color="red">*</font></th>
-					<td><input type="text" name="name" id="name" maxlength="6"></td>
+					<td><input type="text" name="name" id="name" maxlength="6" placeholder="6자이하"></td>
 				</tr>
 				<tr>
 					<th>전화번호</th>
-					<td><input type="text" name="phone" id="phone"></td>
+					<td><input type="text" name="phone" id="phone" maxlength="15"></td>
 				</tr>
 				<tr>
 					<th>이메일</th>
-					<td><input type="text" name="email" id="email"></td>
+					<td><input type="text" name="email" id="email" maxlength="30"></td>
 				</tr>
 				<tr>
 					<td colspan="2">
